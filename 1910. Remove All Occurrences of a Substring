@@ -1,0 +1,22 @@
+class Solution {
+public:
+
+    void occurance(string& s,string& part){
+        int found=s.find(part);
+        if(found!=string::npos){
+            string leftpart=s.substr(0,found);
+            string rightpart=s.substr(found+part.size(),s.size());
+            s=leftpart+rightpart;
+
+            occurance(s,part);
+        }
+        else{
+            return;
+        }
+    }
+
+    string removeOccurrences(string s, string part) {
+        occurance(s,part);
+        return s;
+    }
+};
